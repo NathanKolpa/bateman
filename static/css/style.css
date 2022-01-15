@@ -1,0 +1,104 @@
+@font-face {
+  font-family: ebgarmond;
+  src: url('/fonts/EBGaramond-VariableFont_wght.ttf');
+}
+
+body {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  margin-top: 50px;
+
+  background: #f8f8ff; /* subtle off white coloring */
+  font-family: ebgarmond;
+}
+
+body:after {
+  content: " ";
+  display: block;
+  flex: 1;
+}
+
+main {
+  width: 1000px;
+  flex: 1;
+}
+
+main > h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  font-weight: normal;
+}
+
+.translation-list {
+  margin-top: 0;
+  padding: 0;
+}
+
+.translation-list > li {
+  display: inline-block;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.sidebar .seperator {
+  padding-top: 15px;
+}
+
+.sidebar-inner {
+  width: 200px;
+  float: right;
+  position: sticky;
+  top: 25px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: black;
+  margin-right: 100px;
+}
+
+.sidebar h1 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.sidebar ul {
+  margin-top: 5px;
+  list-style-type: none;
+  padding-left: 0px;
+}
+
+.sidebar ul li {
+  padding-top: 10px;
+  font-size: 1.2rem;
+}
+
+.listing {
+  padding-left: 0;
+  list-style: none;
+}
+
+.listing a {
+  color: black;
+  font-size: 1.2rem;
+}
+
+.listing .right {
+  float: right;
+}
+
+.meta p {
+  display: inline-block;
+}
+
+.meta p:not(:first-child) {
+  padding-left: 8px;
+}
+
+.meta a {
+  color: black;
+}

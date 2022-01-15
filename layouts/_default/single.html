@@ -1,0 +1,29 @@
+{{ define "main" }}
+<main>
+    <h1>{{ .Title }}</h1>
+
+
+    <div class="meta">
+    <p>{{ .Date.Format "Mon Jan 2, 2006" }}</p>
+
+    {{ with .Params.tags }}
+      {{ range . }}
+        <p> <a href="{{ "tags/" | absURL }}{{ . | urlize }}">{{ . }}</a> </p>
+      {{ end }}
+    {{ end }}
+    {{ with .Params.categories }}
+      {{ range . }}
+        <p> <a href="{{ "categories/" | absURL }}{{ . | urlize }}">{{ . }}</a> </p>
+      {{ end }}
+    {{ end }}
+
+
+    <p>{{ .WordCount }} worden</p>
+
+    </div>
+
+    <article>
+      {{ .Content }}
+    </article>
+</main>
+{{ end }}

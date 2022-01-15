@@ -1,0 +1,36 @@
+{{ define "main" }}
+<main>
+    <article>
+      {{ .Content }}
+    </article>
+
+    <article>
+      <section>
+        <h2>Recent</h2>
+        <ul class="listing">
+          {{ range ( first 4 (where ( where .Site.Pages "IsNode" false) "Type" "!=" "page").ByDate ) }}
+          <li>
+            <a href="{{ .Permalink }}">
+              <span class="left">{{ .Title }}</span>
+              <span class="right">{{ .Date.Format "2006-01-02" }}</span>
+            </a>
+          </li>
+          {{- end}}
+        </ul>
+      </section>
+      <section>
+        <h2>Zoeken</h2>
+        <ul class="listing">
+          {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "taxonomy") }}
+          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+          {{- end}}
+        </ul>
+      </section>
+
+    </article>
+    
+
+</main>
+{{ end }}
+
+
