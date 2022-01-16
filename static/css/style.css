@@ -93,12 +93,14 @@ main > h1 {
 
 .meta p {
   display: inline-block;
-}
-
-.meta p:not(:first-child) {
-  padding-left: 8px;
+  padding-right: 8px;
+  padding-left: 0;
 }
 
 .meta a {
   color: black;
+}
+
+img {
+  width: 100%;
 }

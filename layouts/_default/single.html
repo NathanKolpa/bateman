@@ -2,9 +2,24 @@
 <main>
     <h1>{{ .Title }}</h1>
 
+    <div class="meta">
+      <p>{{ .Date.Format "Mon Jan 2, 2006" }}</p>
+
+      {{ if isset .Params "repository" }}
+        <p><a href="{{  .Params.repository  }}">Repository</p>
+      {{ end }}
+    </div>
+
+    <article>
+      {{ .Content }}
+    </article>
 
     <div class="meta">
-    <p>{{ .Date.Format "Mon Jan 2, 2006" }}</p>
+      {{ range .Translations }}
+      <p>
+        <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+      </p>
+      {{ end }}
 
     {{ with .Params.tags }}
       {{ range . }}
@@ -18,12 +33,6 @@
     {{ end }}
 
 
-    <p>{{ .WordCount }} worden</p>
-
     </div>
-
-    <article>
-      {{ .Content }}
-    </article>
 </main>
 {{ end }}

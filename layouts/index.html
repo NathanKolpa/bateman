@@ -4,6 +4,15 @@
       {{ .Content }}
     </article>
 
+    <div class="meta">
+    {{ range .Translations }}
+    <p>
+      <a href="{{ .Permalink }}">{{ .Language.LanguageName }}</a>
+    </p>
+    {{ end }}
+
+    </div>
+
     <article>
       <section>
         <h2>Recent</h2>
@@ -18,8 +27,8 @@
           {{- end}}
         </ul>
       </section>
+      <h2>Index</h2>
       <section>
-        <h2>Zoeken</h2>
         <ul class="listing">
           {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "taxonomy") }}
           <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
