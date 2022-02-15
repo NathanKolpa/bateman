@@ -29,17 +29,7 @@
           {{- end}}
         </ul>
       </section>
-      <h2>Index</h2>
-      <section>
-        <ul class="listing">
-          {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "taxonomy") }}
-          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-          {{- end}}
-        </ul>
-      </section>
-
     </article>
-    
 
 </main>
 {{ end }}
