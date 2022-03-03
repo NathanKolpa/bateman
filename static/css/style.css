@@ -109,3 +109,8 @@ code {
   padding: 8px;
   display: inline-block;
 }
+
+div.highlight pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
