@@ -104,3 +104,8 @@ main > h1 {
 img {
   width: 100%;
 }
+
+code {
+  padding: 8px;
+  display: inline-block;
+}

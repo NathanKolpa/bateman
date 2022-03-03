@@ -6,7 +6,7 @@
     </article>
 
     <ul class="listing">
-    {{ range .Pages }}
+    {{ range .Pages.ByDate }}
         <li>
             <a href="{{.Permalink}}">
               <span class="left">{{ .Title }}</span>

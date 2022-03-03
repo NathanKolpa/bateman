@@ -1,5 +1,7 @@
 {{ define "main" }}
 <main>
+    <h1>{{ .Title }}</h1>
+
     <article>
       {{ .Content }}
     </article>
@@ -17,7 +19,7 @@
       <section>
         <h2>Recent</h2>
         <ul class="listing">
-          {{ range ( first 4 (where ( where .Site.Pages "IsNode" false) "Type" "!=" "page").ByDate ) }}
+          {{ range ( first 4 (where ( where .Site.Pages "IsNode" false) "Type" "!=" "page").ByDate.Reverse ) }}
           <li>
             <a href="{{ .Permalink }}">
               <span class="left">{{ .Title }}</span>
@@ -27,17 +29,7 @@
           {{- end}}
         </ul>
       </section>
-      <h2>Index</h2>
-      <section>
-        <ul class="listing">
-          {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "taxonomy") }}
-          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-          {{- end}}
-        </ul>
-      </section>
-
     </article>
-    
 
 </main>
 {{ end }}
