@@ -5,6 +5,8 @@
     <div class="meta">
       <p>{{ .Date.Format "Mon Jan 2, 2006" }}</p>
 
+      <p>{{ .Params.author }}</p>
+
       {{ if isset .Params "repository" }}
         <p><a href="{{  .Params.repository  }}">Repository</a></p>
       {{ end }}

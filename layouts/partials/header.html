@@ -1,24 +1,25 @@
-<aside class="sidebar">
+<div class="sidebar">
   <div class="sidebar-inner">
-  <h1>
-    <a href="{{.Site.Home.Permalink}}">{{.Site.Title}}</a>
-  </h1>
+  <header>
 
-  <nav>
-    <ul>
+    <a class="brand" href="{{.Site.Home.Permalink}}">{{.Site.Title}}</a>
 
-    {{ range .Site.Menus.main.Sort }}
-        <li>
-            <a href="{{.URL}}">{{.Name}}</a>
-        </li>
-    {{ end }}
-
-    <li class="seperator"></li>
-
-    {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "section") }}
-          <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
-    {{- end}}
-    </ul>
-  </nav>
+    <nav>
+      <ul>
+  
+      {{ range .Site.Menus.main.Sort }}
+          <li>
+              <a href="{{.URL}}">{{.Name}}</a>
+          </li>
+      {{ end }}
+  
+      <li class="seperator"></li>
+  
+      {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "section") }}
+            <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
+      {{- end}}
+      </ul>
+    </nav>
+  </header>
   </div>
-</aside>
+</div>

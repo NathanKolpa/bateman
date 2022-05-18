@@ -10,9 +10,12 @@ tags = []
 features = []
 min_version = "0.41.0"
 
+[taxonomies] 
+author = "authors"
+
 [author]
-  name = ""
-  homepage = ""
+  name = "Nathan Kolpa"
+  homepage = "https://kolpa.me"
 
 # If porting an existing theme
 [original]

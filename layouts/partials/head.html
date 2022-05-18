@@ -1,8 +1,52 @@
 <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">    
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
   <base href="{{ .Site.BaseURL }}">
-  <link href="/css/syntax.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "/css/syntax.css" | relURL }}">
 
   <title>{{ .Page.Title }} - {{ .Site.Title }}</title>
-  <meta charset="UTF-8">
+  <link rel="canonical" href="{{ .Permalink }}">
+
+
+  <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+
+  {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+    <meta name="robots" content="INDEX, FOLLOW">
+  {{ else }}
+    <meta name="robots" content="NOINDEX, NOFOLLOW">
+  {{ end }}
+
+  {{ if .OutputFormats.Get "RSS" }}
+    {{ with .OutputFormats.Get "RSS" }}
+      <link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" />
+      <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
+    {{ end }}
+  {{ end }}
+
+  {{ if .Site.Params.enableGoogleAnalytics }} 
+    {{ template "_internal/google_analytics_async.html" . }}
+  {{ end }}
+
+  {{ if .Params.author }}
+    {{ with .Params.author }}
+      <meta name="author" content="{{ . }}">
+    {{ end }}
+  {{ else }}
+    {{ with .Site.Author.name }}
+      <meta name="author" content="{{ . }}">
+    {{ end }}
+  {{ end }}
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{ .Page.Title }}" />
+  <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  
+
 </head>
