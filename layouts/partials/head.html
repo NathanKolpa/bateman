@@ -9,11 +9,11 @@
   <link rel="stylesheet" href="{{ "/css/style.css" | relURL }}">
   <link rel="stylesheet" href="{{ "/css/syntax.css" | relURL }}">
 
+
   <title>{{ .Page.Title }} - {{ .Site.Title }}</title>
   <link rel="canonical" href="{{ .Permalink }}">
-
-
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}">
+  <meta name="keywords" content="{{ with .Params.tags }}{{ delimit . ", "}}{{ end }}" />
 
   {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
     <meta name="robots" content="INDEX, FOLLOW">
@@ -27,6 +27,7 @@
       <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
     {{ end }}
   {{ end }}
+
 
   {{ if .Site.Params.enableGoogleAnalytics }} 
     {{ template "_internal/google_analytics_async.html" . }}
@@ -42,11 +43,28 @@
     {{ end }}
   {{ end }}
 
-  <meta property="og:type" content="article" />
-  <meta property="og:title" content="{{ .Page.Title }}" />
+
+  {{ if .IsPage }}
+    <meta property="og:type" content="article" />
+  {{ end }}
+  {{ with .Title }}
+    <meta property="og:title" content="{{.}}" />
+  {{ end }}
   <meta property="og:description" content="{{ with .Description }}{{ . }}{{ else }}{{if .IsPage}}{{ .Summary }}{{ else }}{{ with .Site.Params.description }}{{ . }}{{ end }}{{ end }}{{ end }}" />
   <meta property="og:url" content="{{ .Permalink }}" />
   <meta property="og:site_name" content="{{ .Site.Title }}" />
-  
+
+  {{ if .IsPage }}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{.Title }}",
+        "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z0700" }}",
+        "wordCount":{{ .Content | countwords  }}
+      }
+      </script>
+    {{ end }}
+
 
 </head>

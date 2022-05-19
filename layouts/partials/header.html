@@ -7,13 +7,17 @@
     <nav>
       <ul>
   
-      {{ range .Site.Menus.main.Sort }}
+
+      {{ with .Site.Menus.main.Sort }}
+        {{ range . }}
           <li>
               <a href="{{.URL}}">{{.Name}}</a>
           </li>
+        {{ end }}
+        <li class="seperator" role="separator"></li>
       {{ end }}
   
-      <li class="seperator"></li>
+
   
       {{ range (where (where .Site.Pages "IsNode" true) "Kind" "=" "section") }}
             <li><a href="{{ .Permalink }}">{{ .Title }}</a></li>
