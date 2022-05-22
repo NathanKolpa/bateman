@@ -3,10 +3,6 @@
   src: url('/fonts/EBGaramond-VariableFont_wght.ttf');
 }
 
-p {
-  font-size: 1.2em;
-}
-
 h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-size: 1.2em;
@@ -33,59 +29,18 @@ body {
   padding: 0;
   margin: 15px;
   margin-top: 50px;
+  font-size: 1.2em;
 
   background: #f8f8ff; /* subtle off white coloring */
   font-family: ebgarmond;
 }
 
-@media only screen and (max-width: 768px)  {
-  body {
-    flex: 1;
-    flex-grow: 1;
-    flex-direction: row;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items:center;
-    margin-top: 0;
-  }
-}
-
-
-body:after {
-  content: " ";
-  display: block;
-  flex: 1;
-}
 
 main {
   flex: 1;
   flex: 0 0;
   flex-basis: calc(100% / 3);
   width: 100%;
-}
-
-@media only screen and (max-width: 1600px)  {
-  main {
-    flex-basis: 50%;
-  }
-}
-
-@media only screen and (max-width: 1200px)  {
-  main {
-    flex-basis: 60%;
-  }
-}
-
-@media only screen and (max-width: 1000px)  {
-  main {
-    flex-basis: calc(100% / 3 * 2);
-  }
-}
-
-@media only screen and (max-width: 768px)  {
-  main {
-    margin-top: 25px;
-  }
 }
 
 main > h1 {
@@ -121,18 +76,6 @@ main > h1 {
   top: 25px;
 }
 
-@media only screen and (max-width: 1000px)  {
-  .sidebar-inner {
-    float: unset;
-  }
-}
-
-@media only screen and (max-width: 768px)  {
-  .sidebar-inner {
-    width: 100%;
-  }
-}
-
 .sidebar a {
   text-decoration: none;
   color: black;
@@ -153,7 +96,6 @@ header .brand {
 
 .sidebar ul li {
   padding-top: 10px;
-  font-size: 1.2rem;
 }
 
 .listing {
@@ -163,7 +105,6 @@ header .brand {
 
 .listing a {
   color: black;
-  font-size: 1.2rem;
 }
 
 .listing .right {
@@ -187,9 +128,57 @@ img {
 code {
   padding: 8px;
   display: inline-block;
+  tab-size: 4;
+  font-size: 0.9em;
 }
 
 div.highlight pre {
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 1.5;
+}
+
+thead {
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px)  {
+  body {
+    flex: 1;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items:center;
+    margin-top: 0;
+  }
+
+  main {
+    margin-top: 25px;
+  }
+
+  .sidebar-inner {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1000px)  {
+  main {
+    flex-basis: calc(100% / 3 * 2);
+  }
+
+  .sidebar-inner {
+    float: unset;
+  }
+}
+
+@media only screen and (max-width: 1600px)  {
+  main {
+    flex-basis: 50%;
+  }
 }
